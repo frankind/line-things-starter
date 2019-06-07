@@ -63,10 +63,10 @@ function sendMessage(input) {
     }
   ])
   .then(() => {
-    console.log('message sent');
+    alert('message sent');
   })
   .catch((err) => {
-    console.log('error', err);
+    alert(err);
   });
 }
 
