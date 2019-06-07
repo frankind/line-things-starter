@@ -56,6 +56,7 @@ function uiCountPressButton() {
 }
 
 function sendMessage(input) {
+  const el = document.getElementById("test-count");
   liff.sendMessages([
     {
       type:'text',
@@ -63,10 +64,10 @@ function sendMessage(input) {
     }
   ])
   .then(() => {
-    alert('message sent');
+    el.innerText = 'message sent';
   })
   .catch((err) => {
-    alert(err);
+    el.innerText = err;
   });
 }
 
