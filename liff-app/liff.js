@@ -57,13 +57,48 @@ function uiCountPressButton() {
 
 function sendMessage(input) {
   const el = document.getElementById("test-count");
-  liff.getProfile().then((profile)=>{
-    el.innerText = profile.displayName
-  })
+  // liff.getProfile().then((profile)=>{
+  //   el.innerText = profile.displayName
+  // })
   liff.sendMessages([
     {
-      type:'text',
-      text: input
+      "type": "flex",
+      "altText": "Flex Message",
+      "contents": {
+        "type": "bubble",
+        "direction": "ltr",
+        "header": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "Home Status",
+              "align": "center"
+            }
+          ]
+        },
+        "hero": {
+          "type": "image",
+          "url": "https://engineering.linecorp.com/wp-content/uploads/2018/12/avatar_user_1208_1543975478-90x90.png",
+          "flex": 0,
+          "size": "full",
+          "aspectRatio": "1.51:1",
+          "aspectMode": "cover",
+          "backgroundColor": "#FFFFFF"
+        },
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": input,
+              "align": "center"
+            }
+          ]
+        }
+      }
     }
   ])
   .then(() => {
