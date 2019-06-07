@@ -57,6 +57,9 @@ function uiCountPressButton() {
 
 function sendMessage(input) {
   const el = document.getElementById("test-count");
+  liff.getProfile().then((profile)=>{
+    el.innerText = profile.displayName
+  })
   liff.sendMessages([
     {
       type:'text',
