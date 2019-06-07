@@ -39,7 +39,7 @@ function handlerToggleLed() {
 function uiToggleLedButton(state) {
     const el = document.getElementById("btn-led-toggle");
     el.innerText = state ? "Switch LED OFF" : "Switch LED ON";
-
+    sendMessage(el.innerText);
     if (state) {
       el.classList.add("led-on");
     } else {
@@ -52,6 +52,22 @@ function uiCountPressButton() {
 
     const el = document.getElementById("click-count");
     el.innerText = clickCount;
+    sendMessage('HW: '+clickCount)
+}
+
+function sendMessage(input) {
+  liff.sendMessages([
+    {
+      type:'text',
+      text: input
+    }
+  ])
+  .then(() => {
+    console.log('message sent');
+  })
+  .catch((err) => {
+    console.log('error', err);
+  });
 }
 
 function uiToggleStateButton(pressed) {
